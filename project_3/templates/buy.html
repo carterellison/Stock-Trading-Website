@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy a stock
+{% endblock %}
+
+{% block main %}
+    
+   
+    
+    
+    <form action="{{ url_for('buy') }}" method="post" id = "reg">
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="stockName" placeholder="Stock Symbol" type="text"/>
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="numStocks" id="numStocks" placeholder="Number of stocks" type="text"/>
+                
+            </div>
+            <div>
+                Cash = {{cash|usd}}
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Buy</button>
+            </div>
+            
+        </fieldset>
+    </form>
+ <script>
+    
+        document.getElementById('reg').onsubmit = function(){
+            if(document.getElementById('numStocks').value <= 0)
+            {
+                alert("Invalid number of shares");
+                return false;
+            }
+            else{
+            return true;
+            }
+        }
+    </script>
+{% endblock %}

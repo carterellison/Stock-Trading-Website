@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+    {% block header%}
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+            <script>
+
+                function quote()
+                {
+                    var url = '/quoted?symbol=' + $('#symbol').val();
+                    $.getJSON(url, function(data) {
+                        
+                            $('#quote').html('A share of ' + data.name + ' costs $' + data.price + '.');
+                            $('#symbol').val('');
+                        
+
+                    });
+                }
+
+            </script>
+        {% endblock %}
+{% block title %}
+    Enter the stock symbol to get a quote
+{% endblock %}
+
+{% block main %}
+<form action="{{ url_for('quoted') }}" method="post" onsubmit = "quote(); return false;">
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="symbol" id = "symbol" placeholder="Stock Symbol" type="text"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Search</button>
+            </div>
+        </fieldset>
+    </form>
+    
+
+    <p id="quote"></p>
+{% endblock %}

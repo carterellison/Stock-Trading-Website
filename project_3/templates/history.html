@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares Traded</th>
+                <th>Price</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(length) %}
+                <tr>
+                    <td>{{table[i]["stockName"]}}</td>
+                    <td>{{names[i]}}</td>
+                    <td>{{table[i]["numBought"]}}</td>
+                    <td>{{table[i]["price"]|usd}}</td>
+                    <td>{{table[i]["date"]}}</td>
+                </tr>
+            {% endfor %}
+            
+            
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td>{{final_t}}</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for i in range(length) %}
+                <tr>
+                    <td>{{stocks[i]}}</td>
+                    <td>{{names[i]}}</td>
+                    <td>{{shares[i]}}</td>
+                    <td>{{prices[i]|usd}}</td>
+                    <td>{{totals[i]}}</td>
+                </tr>
+            {% endfor %}
+            
+            <tr>
+                <td colspan="4">CASH</td>
+                <td>{{cash}}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
